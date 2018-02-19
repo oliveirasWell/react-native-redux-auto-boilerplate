@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Image, ScrollView, StyleSheet, Switch, Text, View} from 'react-native';
+import {Alert, Image, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
 import {FirebaseService} from '../../services/FirebaseService';
 import {nodes} from '../../utils/custom/nodes';
 import {socialLinks} from "../../utils/staticLinks";
@@ -89,12 +89,30 @@ export default class Root extends React.Component {
             }
         };
 
+        const updateNode = (node) => {
+            this.setState({node});
+            FirebaseService.getAllDataBy(node, dataIn => this.setState({dataList: dataIn}), 20, c => nodes.users.flat(c), node.orderByChild);
+        };
+
+        const isNodeActive = (node) => {
+            return node === this.state.node ? 'bold' : '100';
+        };
+
         return (
             <View style={{backgroundColor: 'transparent', flex: 1,}}>
                 <ScrollView>
                     <View style={{backgroundColor: 'transparent', alignItems: 'flex-start', justifyContent: 'center', height: 60, paddingTop: 60, paddingBottom: 20, margin: 10,}}>
                         <Text style={{fontWeight: '900', fontSize: 30, backgroundColor: 'transparent'}}>Home Controller</Text>
-                        <Text style={{fontWeight: '100', backgroundColor: 'transparent'}}>{this.state.node.name}</Text>
+                    </View>
+
+                    <View style={{flexDirection: 'row', margin: 10}}>
+                        {
+                            Object.values(nodes).map((node, index) =>
+                                <TouchableOpacity key={index} onPress={() => updateNode(node)} style={{marginRight: 20}}>
+                                    <Text style={{backgroundColor: 'transparent', fontWeight: isNodeActive(node)}}>{node.name}</Text>
+                                </TouchableOpacity>
+                            )
+                        }
                     </View>
 
                     <View style={{flex: 1}}>
