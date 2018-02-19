@@ -1,5 +1,8 @@
 # React Native (Not yet) Redux Firebase Automatic Boilerplate
 
+
+Expo link [here](https://expo.io/@oliveiraswell/react-native-redux-firebase-auto-boilerplate)
+
 -------------------------------------------------------------------------------
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
