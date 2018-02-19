@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Image, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, Platform, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
 import {FirebaseService} from '../../services/FirebaseService';
 import {nodes} from '../../utils/custom/nodes';
 import {socialLinks} from "../../utils/staticLinks";
@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
             height: 1
         },
         minHeight: 175,
+    },
+    statusBarBackground: {
+        height: Platform.OS === 'ios' ? 20 : 0,
+        backgroundColor: "white",
     },
 });
 
@@ -100,8 +104,11 @@ export default class Root extends React.Component {
 
         return (
             <View style={{backgroundColor: 'transparent', flex: 1,}}>
+
+                <View style={[styles.statusBarBackground]}/>
+
                 <ScrollView>
-                    <View style={{backgroundColor: 'transparent', alignItems: 'flex-start', justifyContent: 'center', height: 60, paddingTop: 60, paddingBottom: 20, margin: 10,}}>
+                    <View style={{backgroundColor: 'transparent', alignItems: 'flex-start', justifyContent: 'center', height: 60, paddingTop: 20, paddingBottom: 20, margin: 10,}}>
                         <Text style={{fontWeight: '900', fontSize: 30, backgroundColor: 'transparent'}}>Home Controller</Text>
                     </View>
 
