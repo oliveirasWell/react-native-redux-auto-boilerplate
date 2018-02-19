@@ -1,5 +1,7 @@
 {
   "expo": {
+    "name": "React Native Redux Firebase Auto Boilerplate",
     "sdkVersion": "25.0.0"
+    //    icon: 'something'
   }
 }
