@@ -82,11 +82,7 @@ export default class Root extends React.Component {
 
 
         const printItem = (key, item) => {
-            if (key.type === 'checkbox') {
-                return <Switch style={{margin: 7}} onValueChange={() => this.changeState(item, key)} value={item[key.key]} tintColor="white"/>;
-            }
-
-            if (key.key === 'name') {
+            if (key.key === 'name' || key.name === 'Name') {
                 return <Text style={{color: 'white', fontWeight: '400', fontSize: 25, marginTop: 5, marginBottom: 15}}> {getItemOrTrueIfTrue(item[key.key])} </Text>
             } else {
                 return <Text style={{color: 'white', fontSize: 15, marginTop: 5, marginBottom: 15}}> {getItemOrTrueIfTrue(item[key.key])} </Text>;
@@ -118,7 +114,6 @@ export default class Root extends React.Component {
                                                    position: 'absolute',
                                                    borderRadius: 20,
                                                }}
-                                               blurRadius={2}
                                         />
 
                                         {
