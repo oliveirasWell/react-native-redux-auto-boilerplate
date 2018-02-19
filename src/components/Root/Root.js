@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Image, Platform, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Animated, Platform, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
 import {FirebaseService} from '../../services/FirebaseService';
 import {nodes} from '../../utils/custom/nodes';
 import {socialLinks} from "../../utils/staticLinks";
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
         borderRadius: 20,
-        backgroundColor: '#b5b5b5',
+        backgroundColor: '#000000',
         alignItems: 'flex-start',
         justifyContent: 'center',
         padding: 15,
@@ -45,13 +45,96 @@ const imageList = [
 const getImage = () => {
     return imageList[Math.floor(Math.random() * (imageList.length - 1))];
 };
+
+class FadeInView extends React.Component {
+    state = {
+        fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0
+    };
+    animate = () => {
+        Animated.timing(                  // Animate over time
+            this.state.fadeAnim,            // The animated value to drive
+            {
+                toValue: 1,                   // Animate to opacity: 1 (opaque)
+                duration: 5000,              // Make it take a while
+            }
+        ).start();
+    };
+
+    componentDidMount() {
+        Animated.timing(                  // Animate over time
+            this.state.fadeAnim,            // The animated value to drive
+            {
+                toValue: 1,                   // Animate to opacity: 1 (opaque)
+                duration: 1000,              // Make it take a while
+            }
+        ).start();                        // Starts the animation
+    }
+
+    componentWillUpdate(thisProps, nexProps) {
+        if (thisProps === nexProps) {
+            return;
+        }
+
+        Animated.timing(                  // Animate over time
+            this.state.fadeAnim,            // The animated value to drive
+            {
+                toValue: 0,                   // Animate to opacity: 1 (opaque)
+                duration: 1000,              // Make it take a while
+            }
+        ).start();
+    }
+
+    render() {
+        let {fadeAnim} = this.state;
+
+        return (
+            <View                 // Special animatable View
+                style={{
+                    ...this.props.style,
+                }}
+            >
+                <Animated.Image source={this.props.src}
+                                style={{
+                                    resizeMode: 'cover',
+                                    opacity: fadeAnim,         // Bind opacity to animated value
+                                    flex: 1,
+                                    top: 0,
+                                    left: 0,
+                                    bottom: 0,
+                                    right: 0,
+                                    position: 'absolute',
+                                    borderRadius: 20,
+                                }}
+                                onLoad={this.animate}
+                />
+            </View>
+        );
+    }
+}
+
+
+const BorderedCard = (props) => {
+
+    return <FadeInView
+        src={{uri: !!(props.item['imageUrl']) ? props.item['imageUrl'] : getImage()}}
+        style={{
+            flex: 1,
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            position: 'absolute',
+            borderRadius: 20,
+        }}
+    />
+};
+
 export default class Root extends React.Component {
 
     state = {
         dataList: null,
         node: nodes.devices,
     };
-
     changeState = (item, key) => {
 
         if (key.type !== 'checkbox') {
@@ -83,7 +166,6 @@ export default class Root extends React.Component {
         const showAlert = () => {
             Alert.alert('You tapped the button!');
         };
-
 
         const printItem = (key, item) => {
             if (key.key === 'name' || key.name === 'Name') {
@@ -128,18 +210,7 @@ export default class Root extends React.Component {
                                 ? this.state.dataList.map((item, index) =>
                                     <View key={index} style={styles.container}>
 
-                                        <Image source={{uri: !!item['imageUrl'] ? item['imageUrl'] : getImage()}}
-                                               style={{
-                                                   resizeMode: 'cover',
-                                                   flex: 1,
-                                                   top: 0,
-                                                   left: 0,
-                                                   bottom: 0,
-                                                   right: 0,
-                                                   position: 'absolute',
-                                                   borderRadius: 20,
-                                               }}
-                                        />
+                                        <BorderedCard item={item}/>
 
                                         {
                                             this.state.node.keys.filter(key => !(key.type === 'checkbox')).map((key, index2) =>
@@ -177,6 +248,5 @@ export default class Root extends React.Component {
                 </View>
             </View>
         );
-
     }
 }
