@@ -72,6 +72,10 @@ What this mean:
 
 The project expects you have a users node to insert users on login.
 
+## TODOS
+
+- Navegation
+
 -------------------------------------------------------------------------------
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
