@@ -84,3 +84,5 @@ yarn.lock
 
 /coverage
 /third-party
+
+package-lock.json
