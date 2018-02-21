@@ -6,6 +6,8 @@ Expo link [here](https://expo.io/@oliveiraswell/react-native-redux-firebase-auto
 
 -------------------------------------------------------------------------------
 
+This project extends the philosophy of [this project](https://github.com/oliveirasWell/react-native-redux-auto-boilerplate). For more information visit the github page of React Redux Firebase Auto Boilerplate.
+
 A react-native-redux-firebase approach to create apps.
 
 ## Configuration
