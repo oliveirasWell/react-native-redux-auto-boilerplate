@@ -2,6 +2,8 @@
 
 Expo link [here](https://expo.io/@oliveiraswell/react-native-redux-firebase-auto-boilerplate)
 
+![A beatfull screen](https://i.imgur.com/4V38bJJ.jpg=250)
+
 -------------------------------------------------------------------------------
 
 A react-native-redux-firebase approach to create apps.
