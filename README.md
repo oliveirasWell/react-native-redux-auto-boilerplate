@@ -1,7 +1,10 @@
-# A React-Redux-Firebase Automatic Boilplate
+# React Native (Not yet) Redux Firebase Automatic Boilerplate
 
-A react-native-redux-firebase approach to create apps. Automatize crud creations with easy way to configure app.
+Expo link [here](https://expo.io/@oliveiraswell/react-native-redux-firebase-auto-boilerplate)
 
+-------------------------------------------------------------------------------
+
+A react-native-redux-firebase approach to create apps.
 
 ## Configuration
 
@@ -64,12 +67,6 @@ What this mean:
 - `canAddNew`: Block input of new entries.
 
 The project expects you have a users node to insert users on login.
-
--------------------------------------------------------------------------------
-# React Native (Not yet) Redux Firebase Automatic Boilerplate
-
-
-Expo link [here](https://expo.io/@oliveiraswell/react-native-redux-firebase-auto-boilerplate)
 
 -------------------------------------------------------------------------------
 
