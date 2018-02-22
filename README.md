@@ -75,6 +75,8 @@ The project expects you have a users node to insert users on login.
 ## TODOS
 
 - Navegation
+- Login and logout
+- Google Analytics: https://github.com/idehub/react-native-google-analytics-bridge
 
 -------------------------------------------------------------------------------
 
