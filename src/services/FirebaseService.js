@@ -40,6 +40,7 @@ export class FirebaseService {
 
             callback(items);
         });
+        return query;
     };
 
     static login = (email, password) => {

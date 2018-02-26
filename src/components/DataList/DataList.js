@@ -20,6 +20,7 @@ export default class DataList extends React.Component {
     state = {
         dataList: null,
         node: nodes.devices,
+        ref: null
     };
     changeAndPushKeyStateOfNode = (item, key) => {
         if (key.type !== 'checkbox') {
@@ -33,12 +34,18 @@ export default class DataList extends React.Component {
             this.setState({dataList: null, node});
         }
 
-        FirebaseService.getAllDataBy(node, dataIn => this.setState({dataList: dataIn}), 20, c => node.flat(c), node.orderByChild);
+        if (this.state.ref !== undefined) {
+            this.state.ref.off();
+        }
+
+        let ref = FirebaseService.getAllDataBy(node, dataIn => this.setState({dataList: dataIn}), 20, c => node.flat(c), node.orderByChild);
+        this.setState({ref});
     };
 
     componentDidMount() {
         const {node} = this.state;
-        FirebaseService.getAllDataBy(node, dataIn => this.setState({dataList: dataIn}), 20, c => node.flat(c), node.orderByChild);
+        let ref = FirebaseService.getAllDataBy(node, dataIn => this.setState({dataList: dataIn}), 20, c => node.flat(c), node.orderByChild);
+        this.setState({ref});
     };
 
     render() {
