@@ -1,21 +1,21 @@
 import firebase from 'firebase';
 
 const prodConfig = {
-    apiKey: "AIzaSyCe0GKe866Qz3JGXUJhbnApny6JHn4YXFo",
-    authDomain: "react-redux-firebase-ex.firebaseapp.com",
-    databaseURL: "https://react-redux-firebase-ex.firebaseio.com",
-    projectId: "react-redux-firebase-ex",
-    storageBucket: "react-redux-firebase-ex.appspot.com",
-    messagingSenderId: "20879823493"
+    apiKey: "***************",
+    authDomain: "***************",
+    databaseURL: "***************",
+    projectId: "***************",
+    storageBucket: "***************",
+    messagingSenderId: "***************"
 };
 
 const devConfig = {
-    apiKey: "AIzaSyCe0GKe866Qz3JGXUJhbnApny6JHn4YXFo",
-    authDomain: "react-redux-firebase-ex.firebaseapp.com",
-    databaseURL: "https://react-redux-firebase-ex.firebaseio.com",
-    projectId: "react-redux-firebase-ex",
-    storageBucket: "react-redux-firebase-ex.appspot.com",
-    messagingSenderId: "20879823493"
+    apiKey: "***************",
+    authDomain: "***************",
+    databaseURL: "***************",
+    projectId: "***************",
+    storageBucket: "***************",
+    messagingSenderId: "***************"
 };
 
 const config = process.env.NODE_ENV === 'production'
